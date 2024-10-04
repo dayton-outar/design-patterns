@@ -23,4 +23,4 @@ Design patterns are valuable for creating scalable, maintainable, and robust sys
 
 ## Further Reading
 
-1. [Design Patterns](https://refactoring.guru/design-patterns) - Refactoring Guru
+1. [Design Patterns in C++](https://refactoring.guru/design-patterns/cpp) - Refactoring Guru
