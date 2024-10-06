@@ -604,6 +604,10 @@ You can provide a custom deleter for `std::unique_ptr`, which can be useful when
 
 ---
 
+> When C++11 introduced `std::unique_ptr`, a smart pointer type that expresses exclusive ownership of a dynamically allocated object and deletes the object when the `unique_ptr` goes out of scope, our style guide initially disallowed usage. The behavior of the `unique_ptr` was unfamiliar to most engineers, and the related move semantics that the language introduced were very new and, to most engineers, very confusing. Preventing the introduction of std::unique_ptr in the codebase seemed the safer choice. We updated our tooling to catch references to the disallowed type and kept our existing guidance recommending other types of existing smart pointers.
+> 
+> Time passed. Engineers had a chance to adjust to the implications of move semantics and we became increasingly convinced that using std::unique_ptr was directly in line with the goals of our style guidance. The information regarding object ownership that a `std::unique_ptr` facilitates at a function call site makes it far easier for a reader to understand that code. The added complexity of introducing this new type, and the novel move semantics that come with it, was still a strong concern, but the significant improvement in the long-term overall state of the codebase made the adoption of `std::unique_ptr` a worthwhile trade-off.[^1]
+
 ### **Summary**
 
 - **`std::unique_ptr`** is a smart pointer for managing **exclusive ownership** of a dynamically allocated resource.
@@ -1391,3 +1395,5 @@ By using `emplace`, you can reduce overhead, improve performance, and simplify c
 ## Videos
 
 1. [Smart Pointers in C++](https://www.youtube.com/watch?v=UOB7-B2MfwA&pp=ygUOc21hcnQgcG9pbnRlcnM%3D)
+
+[^1]: Chapter 8, _Style Guides and Rules_. Software Engineering at Google. Curated by Titus Winters, Tom Manshreck & Hyrum Wright
